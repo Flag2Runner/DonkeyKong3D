@@ -247,7 +247,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Jump",
+                    "name": "DK_Jump",
                     "type": "Button",
                     "id": "0feb0349-63e0-400d-b59f-fd61053d4d5c",
                     "expectedControlType": "",
@@ -368,7 +368,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Jump",
+                    "action": "DK_Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -379,7 +379,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Jump",
+                    "action": "DK_Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -390,7 +390,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
-                    "action": "Jump",
+                    "action": "DK_Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

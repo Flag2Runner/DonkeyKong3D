@@ -333,7 +333,7 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""DK_Jump"",
                     ""type"": ""Button"",
                     ""id"": ""0feb0349-63e0-400d-b59f-fd61053d4d5c"",
                     ""expectedControlType"": """",
@@ -454,7 +454,7 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Jump"",
+                    ""action"": ""DK_Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -465,7 +465,7 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Jump"",
+                    ""action"": ""DK_Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -476,7 +476,7 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XR"",
-                    ""action"": ""Jump"",
+                    ""action"": ""DK_Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1192,7 +1192,7 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
         m_PlayerLockedIn = asset.FindActionMap("PlayerLockedIn", throwIfNotFound: true);
         m_PlayerLockedIn_DK_Move = m_PlayerLockedIn.FindAction("DK_Move", throwIfNotFound: true);
         m_PlayerLockedIn_DK_Lean = m_PlayerLockedIn.FindAction("DK_Lean", throwIfNotFound: true);
-        m_PlayerLockedIn_Jump = m_PlayerLockedIn.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerLockedIn_DK_Jump = m_PlayerLockedIn.FindAction("DK_Jump", throwIfNotFound: true);
         m_PlayerLockedIn_Exit_Cabinet = m_PlayerLockedIn.FindAction("Exit_Cabinet", throwIfNotFound: true);
         m_PlayerLockedIn_InsertCoin = m_PlayerLockedIn.FindAction("InsertCoin", throwIfNotFound: true);
         m_PlayerLockedIn_StartGame = m_PlayerLockedIn.FindAction("StartGame", throwIfNotFound: true);
@@ -1410,7 +1410,7 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
     private List<IPlayerLockedInActions> m_PlayerLockedInActionsCallbackInterfaces = new List<IPlayerLockedInActions>();
     private readonly InputAction m_PlayerLockedIn_DK_Move;
     private readonly InputAction m_PlayerLockedIn_DK_Lean;
-    private readonly InputAction m_PlayerLockedIn_Jump;
+    private readonly InputAction m_PlayerLockedIn_DK_Jump;
     private readonly InputAction m_PlayerLockedIn_Exit_Cabinet;
     private readonly InputAction m_PlayerLockedIn_InsertCoin;
     private readonly InputAction m_PlayerLockedIn_StartGame;
@@ -1434,9 +1434,9 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
         /// </summary>
         public InputAction @DK_Lean => m_Wrapper.m_PlayerLockedIn_DK_Lean;
         /// <summary>
-        /// Provides access to the underlying input action "PlayerLockedIn/Jump".
+        /// Provides access to the underlying input action "PlayerLockedIn/DK_Jump".
         /// </summary>
-        public InputAction @Jump => m_Wrapper.m_PlayerLockedIn_Jump;
+        public InputAction @DK_Jump => m_Wrapper.m_PlayerLockedIn_DK_Jump;
         /// <summary>
         /// Provides access to the underlying input action "PlayerLockedIn/Exit_Cabinet".
         /// </summary>
@@ -1481,9 +1481,9 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
             @DK_Lean.started += instance.OnDK_Lean;
             @DK_Lean.performed += instance.OnDK_Lean;
             @DK_Lean.canceled += instance.OnDK_Lean;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
+            @DK_Jump.started += instance.OnDK_Jump;
+            @DK_Jump.performed += instance.OnDK_Jump;
+            @DK_Jump.canceled += instance.OnDK_Jump;
             @Exit_Cabinet.started += instance.OnExit_Cabinet;
             @Exit_Cabinet.performed += instance.OnExit_Cabinet;
             @Exit_Cabinet.canceled += instance.OnExit_Cabinet;
@@ -1510,9 +1510,9 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
             @DK_Lean.started -= instance.OnDK_Lean;
             @DK_Lean.performed -= instance.OnDK_Lean;
             @DK_Lean.canceled -= instance.OnDK_Lean;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
+            @DK_Jump.started -= instance.OnDK_Jump;
+            @DK_Jump.performed -= instance.OnDK_Jump;
+            @DK_Jump.canceled -= instance.OnDK_Jump;
             @Exit_Cabinet.started -= instance.OnExit_Cabinet;
             @Exit_Cabinet.performed -= instance.OnExit_Cabinet;
             @Exit_Cabinet.canceled -= instance.OnExit_Cabinet;
@@ -1866,12 +1866,12 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDK_Lean(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "DK_Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnJump(InputAction.CallbackContext context);
+        void OnDK_Jump(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Exit_Cabinet" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

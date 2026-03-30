@@ -20,7 +20,8 @@ namespace _MyFiles.Scripts.Managers
         private void OnEnable()
         {
             //Start the game in free roam mode
-            EnableFreeRoam();
+            //EnableFreeRoam();
+            EnableCabinetPlay();
         }
 
         private void OnDisable()
