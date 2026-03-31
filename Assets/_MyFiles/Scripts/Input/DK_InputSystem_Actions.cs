@@ -317,8 +317,8 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
                 {
                     ""name"": ""DK_Move"",
                     ""type"": ""Value"",
-                    ""id"": ""f6915cfb-1678-484d-a4d7-d48f38af5f2f"",
-                    ""expectedControlType"": ""Axis"",
+                    ""id"": ""c7913fdc-89be-427b-a17f-964c171ea09e"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -372,8 +372,8 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""3398baad-3a8a-4150-9726-c22f2e26fabc"",
-                    ""path"": ""<Gamepad>/leftStick/x"",
+                    ""id"": ""71ad3829-61f6-4bfe-81dd-b69cf45e0e1f"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
@@ -383,8 +383,8 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
                 },
                 {
                     ""name"": ""WASD"",
-                    ""id"": ""1215a9c8-1840-464f-bf03-9f2dde553bc6"",
-                    ""path"": ""1DAxis"",
+                    ""id"": ""ae43c49a-2032-4c54-bc16-f1ddf6db0532"",
+                    ""path"": ""Dpad"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -393,8 +393,52 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Negative"",
-                    ""id"": ""84684cd7-5686-423b-b170-bfd8a1afbce9"",
+                    ""name"": ""up"",
+                    ""id"": ""71a9a0ac-e130-4166-8bb9-1a81dd041a9b"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""DK_Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""1e3a4729-d2f4-4c47-9686-cde0c4ff3f77"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""DK_Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""d1ec8170-f3cd-45b6-aa64-8b4f8e0e4c45"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""DK_Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""f887367c-1deb-40f6-ab97-2135b9a4de7c"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""DK_Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""bb94fab4-3fd1-40d0-b29d-195a471fa1f4"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -404,8 +448,19 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Positive"",
-                    ""id"": ""37074abc-88b0-4696-96a0-334d89d3df40"",
+                    ""name"": ""left"",
+                    ""id"": ""2a90dd69-a39e-4234-8c9f-448051625656"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""DK_Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""b1f25848-e271-4f44-9b45-9542f0d954ce"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -415,9 +470,31 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""right"",
+                    ""id"": ""217132ae-71a1-47e8-8b89-b129a87c289a"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""DK_Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
-                    ""id"": ""ac59a79a-5e20-4c83-8135-abf482e74031"",
-                    ""path"": ""<Joystick>/stick/x"",
+                    ""id"": ""8dc28906-3040-4057-898b-6666e71a5245"",
+                    ""path"": ""<XRController>/{Primary2DAxis}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""XR"",
+                    ""action"": ""DK_Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""150040e1-3330-4d70-853f-f41b9859a18f"",
+                    ""path"": ""<Joystick>/stick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
