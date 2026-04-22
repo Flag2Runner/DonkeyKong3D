@@ -116,7 +116,7 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
                     ""id"": ""852140f2-7766-474d-8707-702459ba45f3"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -347,7 +347,7 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
                     ""id"": ""b977ffc3-8ebb-4e15-b4b7-7d596c2ecd54"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": false
                 },
                 {

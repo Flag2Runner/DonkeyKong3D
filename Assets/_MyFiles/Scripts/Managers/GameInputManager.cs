@@ -14,14 +14,14 @@ namespace _MyFiles.Scripts.Managers
         {
             InputActions = new DKinputSystem_Actions();
 
-            InputActions.PlayerLockedIn.Exit_Cabinet.performed += ctx => EnableFreeRoam();
+            //InputActions.PlayerLockedIn.Exit_Cabinet.performed += ctx => EnableFreeRoam();
         }
 
         private void OnEnable()
         {
             //Start the game in free roam mode
-            //EnableFreeRoam();
-            EnableCabinetPlay();
+            EnableFreeRoam();
+            //EnableCabinetPlay();
         }
 
         private void OnDisable()
