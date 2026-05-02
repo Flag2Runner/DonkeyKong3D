@@ -48,14 +48,19 @@ namespace _MyFiles.Scripts.Puppet
 
         private void Update()
         {
-            if (!inputManager) return;
+            // if the input manager is null or If the arcade machine isn't actively playing a game just ignore all inputs and physics
+            if (!inputManager || GameManager.Instance.CurrentState != GameManager.ArcadeState.Playing) return;
 
             Vector3 rayStart = transform.position + (Vector3.up * groundCheckOffset);
             bIsGrounded = Physics.Raycast(rayStart, Vector3.down, groundCheckDistance, groundLayer, QueryTriggerInteraction.Ignore);
             Debug.DrawRay(rayStart, Vector3.down * groundCheckDistance, bIsGrounded ? Color.green : Color.red);
 
             Vector2 moveVector = inputManager.InputActions.PlayerLockedIn.DK_Move.ReadValue<Vector2>();
-            moveInput = moveVector.x;
+            if (bIsGrounded) 
+            {
+                moveInput = moveVector.x;
+            }
+
             climbingInput = moveVector.y;
 
             if (bIsInLadderZone && currentLadder != null && !bIsClimbing && bIsGrounded && !bHasHammer)
@@ -78,6 +83,9 @@ namespace _MyFiles.Scripts.Puppet
 
         private void FixedUpdate()
         {
+            //If the arcade machine isn't actively playing a game just ignore all inputs and physics
+            if (GameManager.Instance.CurrentState != GameManager.ArcadeState.Playing) return;
+
             if (bIsClimbing && currentLadder != null)
             {
                 if (climbingInput > 0)
@@ -175,6 +183,15 @@ namespace _MyFiles.Scripts.Puppet
                 // BUT DO NOT nullify currentLadder! 
                 // If they are currently mid-climb, let them finish using the remembered data!
                 bIsInLadderZone = false;
+            }
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            // If a barrel hits the player lose a life
+            if (collision.gameObject.CompareTag("Barrel"))
+            {
+                GameManager.Instance.LoseLife();
             }
         }
 

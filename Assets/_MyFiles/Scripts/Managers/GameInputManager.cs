@@ -15,6 +15,8 @@ namespace _MyFiles.Scripts.Managers
             InputActions = new DKinputSystem_Actions();
 
             //InputActions.PlayerLockedIn.Exit_Cabinet.performed += ctx => EnableFreeRoam();
+            InputActions.PlayerLockedIn.InsertCoin.performed += ctx => GameManager.Instance.InsertCoin();
+            InputActions.PlayerLockedIn.StartGame.performed += ctx => GameManager.Instance.PressStart();
         }
 
         private void OnEnable()

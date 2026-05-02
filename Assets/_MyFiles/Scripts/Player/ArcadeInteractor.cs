@@ -30,7 +30,7 @@ namespace _MyFiles.Scripts.Player
             InputManager.InputActions.PlayerLockedIn.Exit_Cabinet.performed += ExitArcade;
         }
 
-        // --- TRIGGER LOGIC ---
+        // --- Trigger Logic ---
         private void OnTriggerEnter(Collider other)
         {
             // If the trigger we walked into has an ArcadeCabinet script, remember it!
@@ -49,7 +49,7 @@ namespace _MyFiles.Scripts.Player
             }
         }
 
-        // --- INTERACTION LOGIC ---
+        // --- Interaction Logic ---
         private void TryInteract(InputAction.CallbackContext context)
         {
             Debug.Log("Player Interacted");
@@ -70,7 +70,7 @@ namespace _MyFiles.Scripts.Player
             StartCoroutine(TransitionToFreeRoam());
         }
 
-        // --- COROUTINES ---
+        // --- Corutines ---
         private IEnumerator TransitionToArcade()
         {
             bIsTransitioning = true;
