@@ -2,7 +2,7 @@ using UnityEngine;
 using _MyFiles.Scripts.Managers;
 using _MyFiles.Scripts.Puppet; // To access BasicGiantMover Probably
 
-namespace _MyFiles.Scripts.Puppet
+namespace _MyFiles.Scripts.Puppet.Enviorment
 {
     public class DKWinZone : MonoBehaviour
     {

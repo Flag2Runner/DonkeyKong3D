@@ -11,5 +11,9 @@ namespace _MyFiles.Scripts.Puppet
         public Transform topNode;
         [Tooltip("Check this if the top of the ladder is broken/floating.")]
         public bool isTopBroken = false;
+
+        [Header("Barrel Settings")]
+        [Tooltip("When a barrel drops down this ladder, which way should it roll? (1 for Right, -1 for Left)")]
+        public float barrelRollDirectionOut = 1f;
     }
 }

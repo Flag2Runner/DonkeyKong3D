@@ -199,5 +199,21 @@ namespace _MyFiles.Scripts.Puppet
         {
             if (inputManager) inputManager.InputActions.PlayerLockedIn.DK_Jump.performed -= Jump;
         }
+
+        public void ResetPlayerState()
+        {
+            bIsClimbing = false;
+            bIsInLadderZone = false;
+            currentLadder = null;
+            bHasHammer = false;
+
+            if (jumpManRigidbody != null)
+            {
+                // Force physics back on and reset the constraints
+                jumpManRigidbody.isKinematic = false;
+                jumpManRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+                jumpManRigidbody.linearVelocity = Vector3.zero;
+            }
+        }
     }
 }

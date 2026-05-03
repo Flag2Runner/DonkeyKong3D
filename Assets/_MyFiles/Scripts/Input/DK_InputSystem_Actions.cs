@@ -537,28 +537,6 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
                 },
                 {
                     ""name"": """",
-                    ""id"": ""32679b0e-a7d3-4f29-a299-09c7de9dba24"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""DK_Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""635b2782-c331-4d8b-a181-bfbad5d487df"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""DK_Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""8cac620d-6350-4fc3-b60b-7ed966c3263d"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",

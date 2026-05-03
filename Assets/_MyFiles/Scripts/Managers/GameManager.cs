@@ -1,4 +1,5 @@
 using _MyFiles.Scripts.Environment;
+using _MyFiles.Scripts.Puppet;
 using System;
 using System.Collections;
 using TMPro;
@@ -12,7 +13,7 @@ namespace _MyFiles.Scripts.Managers
         public static GameManager Instance { get; private set; }
 
         //Game State Machine
-        public enum ArcadeState { AttractMode, CreditLoaded, Playing, GameOver }
+        public enum ArcadeState { AttractMode, CreditLoaded, Playing, Respawning, GameOver }
         public ArcadeState CurrentState { get; private set; } = ArcadeState.AttractMode;
 
         // The specific DK Pause State
@@ -31,6 +32,11 @@ namespace _MyFiles.Scripts.Managers
         [Header("Main Menu Text Elements")]
         [SerializeField] private TextMeshProUGUI insertCoinPromptText;
 
+        [Header("Diorama Sync Settings")]
+        public Transform masterLevelCenter;
+        public Transform dioramaCenter;
+        public float puppetScaleFactor = 0.1f;
+
         [Header("Game Stats")]
         public int currentLives = 3;
         public int currentScore = 0;
@@ -38,6 +44,10 @@ namespace _MyFiles.Scripts.Managers
         [Header("Settings")]
         [Tooltip("How long the 'Get Ready' pause lasts before you can move.")]
         public float startDelay = 3f;
+
+        [Header("Respawn Settings")]
+        [SerializeField] private GameObject jumpman;
+        [SerializeField] private Transform jumpmanStartNode;
 
         private void Awake()
         {
@@ -90,6 +100,20 @@ namespace _MyFiles.Scripts.Managers
             // 3. Wait for the jingle to finish
             yield return new WaitForSeconds(startDelay);
 
+            //Destroy all barrels on the screen
+            GameObject[] activeBarrels = GameObject.FindGameObjectsWithTag("Barrel");
+            foreach (GameObject barrel in activeBarrels)
+            {
+                Destroy(barrel);
+            }
+
+            //Teleport Jumpman back to the start and kill any weird physics momentum
+            jumpman.transform.position = jumpmanStartNode.position;
+            if (jumpman.TryGetComponent(out BasicGiantMover jumpmanScript))
+            {
+                jumpmanScript.ResetPlayerState();
+            }
+
             // 4. Give the player control and start the game!
             CurrentState = ArcadeState.Playing;
             Debug.Log("Game Started! Jumpman can move.");
@@ -131,15 +155,40 @@ namespace _MyFiles.Scripts.Managers
             {
                 CurrentState = ArcadeState.GameOver;
                 ShowPanel(gameOverPanel);
-
-                // Go back to the title screen after 5 seconds
                 Invoke(nameof(ResetToAttractMode), 5f);
             }
             else
             {
-                Debug.Log("Lost a life! Respawning Jumpman...");
-                // TODO: Respawn Jumpman, clear barrels on the screen
+                // Start the arcade death pause
+                StartCoroutine(RespawnRoutine());
             }
+        }
+
+        private IEnumerator RespawnRoutine()
+        {
+            CurrentState = ArcadeState.Respawning;
+            Debug.Log("Jumpman died! Freezing game...");
+
+            //Wait a moment so the player sees their death
+            yield return new WaitForSeconds(2f);
+
+            //Destroy all barrels on the screen
+            GameObject[] activeBarrels = GameObject.FindGameObjectsWithTag("Barrel");
+            foreach (GameObject barrel in activeBarrels)
+            {
+                Destroy(barrel);
+            }
+
+            //Teleport Jumpman back to the start and kill any weird physics momentum
+            jumpman.transform.position = jumpmanStartNode.position;
+            if (jumpman.TryGetComponent(out BasicGiantMover jumpmanScript))
+            {
+                jumpmanScript.ResetPlayerState();
+            }
+
+            //Resume gameplay
+            CurrentState = ArcadeState.Playing;
+            Debug.Log("Board reset! Resuming Gameplay...");
         }
 
         public void AddScore(int pointsToAdd)
