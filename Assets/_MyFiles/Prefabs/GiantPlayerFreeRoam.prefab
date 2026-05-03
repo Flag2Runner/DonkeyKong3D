@@ -329,7 +329,7 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   playerCamera: {fileID: 3434472328650860235}
   walkSpeed: 5
-  lookSensitivity: 0.5
+  lookSensitivity: 0.2
 --- !u!114 &3534954249863544686
 MonoBehaviour:
   m_ObjectHideFlags: 0

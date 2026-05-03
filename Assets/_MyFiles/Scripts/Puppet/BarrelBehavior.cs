@@ -138,6 +138,13 @@ namespace _MyFiles.Scripts.Puppet
             {
                 Destroy(gameObject);
             }
+
+            if (other.gameObject.layer == LayerMask.NameToLayer("Hammer"))
+            {
+                // Play explosion puppet/effect
+                GameManager.Instance.AddScore(500);
+                Destroy(gameObject);
+            }
         }
 
         private void StartDrop()

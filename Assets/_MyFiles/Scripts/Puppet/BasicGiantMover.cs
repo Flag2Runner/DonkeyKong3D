@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using _MyFiles.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,6 +19,7 @@ namespace _MyFiles.Scripts.Puppet
         [SerializeField] private float groundCheckDistance = 0.2f;
         [Tooltip("How far UP to start the raycast to prevent starting inside the floor.")]
         [SerializeField] private float groundCheckOffset = 0.1f;
+        public bool IsGrounded => bIsGrounded;
 
         [Header("Climbing Adjustments")]
         [Tooltip("A tiny nudge upward when dismounting a ladder to prevent spawning inside the floor.")]
@@ -26,6 +28,10 @@ namespace _MyFiles.Scripts.Puppet
         [Header("References")]
         [SerializeField] private Rigidbody jumpManRigidbody;
         [SerializeField] private GameInputManager inputManager;
+        [SerializeField] private Animator puppetAnimator;
+
+        [Tooltip("Drag the child GameObject containing the Hammer collider here.")]
+        [SerializeField] private GameObject hammerHitboxObject;
 
         [Header("Debug States")]
         [SerializeField] private float moveInput;
@@ -37,11 +43,15 @@ namespace _MyFiles.Scripts.Puppet
         [SerializeField] private bool bHasHammer = false;
 
         [SerializeField] private LadderData currentLadder;
+        [SerializeField] private bool isFacingRight = true;
 
         private void Start()
         {
             if (!jumpManRigidbody) jumpManRigidbody = GetComponent<Rigidbody>();
             if (!inputManager) return;
+
+            //Turn off the hammer
+            if (hammerHitboxObject != null) hammerHitboxObject.SetActive(false);
 
             inputManager.InputActions.PlayerLockedIn.DK_Jump.performed += Jump;
         }
@@ -62,6 +72,29 @@ namespace _MyFiles.Scripts.Puppet
             }
 
             climbingInput = moveVector.y;
+
+            //Feed data to the Animator
+            if (puppetAnimator != null)
+            {
+                puppetAnimator.SetFloat("Speed", Mathf.Abs(moveInput));
+                puppetAnimator.SetBool("IsGrounded", bIsGrounded);
+                puppetAnimator.SetFloat("VerticalVelocity", jumpManRigidbody.linearVelocity.y);
+                puppetAnimator.SetBool("IsClimbing", bIsClimbing);
+                puppetAnimator.SetFloat("ClimbSpeed", bIsClimbing ? climbingInput : 0f);
+                puppetAnimator.SetBool("HasHammer", bHasHammer);
+            }
+
+            //Flip the character model left or right
+            if (moveInput > 0.1f && !isFacingRight && !bIsClimbing)
+            {
+                isFacingRight = true;
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else if (moveInput < -0.1f && isFacingRight && !bIsClimbing)
+            {
+                isFacingRight = false;
+                transform.rotation = Quaternion.Euler(0, 180, 0); // Flips the Master, and PuppetSync will copy it
+            }
 
             if (bIsInLadderZone && currentLadder != null && !bIsClimbing && bIsGrounded && !bHasHammer)
             {
@@ -137,6 +170,9 @@ namespace _MyFiles.Scripts.Puppet
             jumpManRigidbody.isKinematic = true;
             jumpManRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 
+            //Force him to face forward while on a ladder
+            transform.rotation = Quaternion.Euler(0, -180, 0);
+
             // Snap to the exact X and Z of the ladder, but maintain our current Y height (standing on the floor)
             transform.position = new Vector3(startNode.position.x, transform.position.y, startNode.position.z);
         }
@@ -172,6 +208,13 @@ namespace _MyFiles.Scripts.Puppet
                 currentLadder = ladder;
                 bIsInLadderZone = true;
             }
+
+            //Pick up the Hammer (Need to make sure hammer items in the scene have this tag)
+            if (other.CompareTag("HammerPickup"))
+            {
+                Destroy(other.gameObject); // Remove the item from the map
+                StartCoroutine(HammerTimerRoutine());
+            }
         }
 
         private void OnTriggerExit(Collider other)
@@ -191,6 +234,9 @@ namespace _MyFiles.Scripts.Puppet
             // If a barrel hits the player lose a life
             if (collision.gameObject.CompareTag("Barrel"))
             {
+                //Trigger the death animation!
+                if (puppetAnimator != null) puppetAnimator.SetTrigger("Die");
+
                 GameManager.Instance.LoseLife();
             }
         }
@@ -206,6 +252,8 @@ namespace _MyFiles.Scripts.Puppet
             bIsInLadderZone = false;
             currentLadder = null;
             bHasHammer = false;
+            if (hammerHitboxObject != null) hammerHitboxObject.SetActive(false);
+            StopAllCoroutines(); // Stops the hammer timer if it was running
 
             if (jumpManRigidbody != null)
             {
@@ -214,6 +262,24 @@ namespace _MyFiles.Scripts.Puppet
                 jumpManRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
                 jumpManRigidbody.linearVelocity = Vector3.zero;
             }
+
+            //Wipe the animator memory so he doesn't stay dead
+            if (puppetAnimator != null)
+            {
+                puppetAnimator.ResetTrigger("Die");
+                puppetAnimator.Play("Idle");
+            }
+        }
+        private IEnumerator HammerTimerRoutine()
+        {
+            bHasHammer = true;
+            if (hammerHitboxObject != null) hammerHitboxObject.SetActive(true);
+
+            // Classic arcade hammer lasts about 10 seconds
+            yield return new WaitForSeconds(10f);
+
+            bHasHammer = false;
+            if (hammerHitboxObject != null) hammerHitboxObject.SetActive(false);
         }
     }
 }
