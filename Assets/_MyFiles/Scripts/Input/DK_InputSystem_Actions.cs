@@ -367,6 +367,15 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""2955ebbb-7f2f-4727-af33-20232396ebd6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -708,6 +717,39 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""StartGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a313d566-b245-4a60-8bfc-8b0c6e262d1e"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""17b5c4b2-af45-4767-b23b-ed7b92e6fc60"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe6ec4e9-5c36-4c59-8493-206582f91ca5"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1306,6 +1348,7 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
         m_PlayerLockedIn_Exit_Cabinet = m_PlayerLockedIn.FindAction("Exit_Cabinet", throwIfNotFound: true);
         m_PlayerLockedIn_InsertCoin = m_PlayerLockedIn.FindAction("InsertCoin", throwIfNotFound: true);
         m_PlayerLockedIn_StartGame = m_PlayerLockedIn.FindAction("StartGame", throwIfNotFound: true);
+        m_PlayerLockedIn_Pause = m_PlayerLockedIn.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1524,6 +1567,7 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
     private readonly InputAction m_PlayerLockedIn_Exit_Cabinet;
     private readonly InputAction m_PlayerLockedIn_InsertCoin;
     private readonly InputAction m_PlayerLockedIn_StartGame;
+    private readonly InputAction m_PlayerLockedIn_Pause;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerLockedIn".
     /// </summary>
@@ -1559,6 +1603,10 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
         /// Provides access to the underlying input action "PlayerLockedIn/StartGame".
         /// </summary>
         public InputAction @StartGame => m_Wrapper.m_PlayerLockedIn_StartGame;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerLockedIn/Pause".
+        /// </summary>
+        public InputAction @Pause => m_Wrapper.m_PlayerLockedIn_Pause;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1603,6 +1651,9 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
             @StartGame.started += instance.OnStartGame;
             @StartGame.performed += instance.OnStartGame;
             @StartGame.canceled += instance.OnStartGame;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         /// <summary>
@@ -1632,6 +1683,9 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
             @StartGame.started -= instance.OnStartGame;
             @StartGame.performed -= instance.OnStartGame;
             @StartGame.canceled -= instance.OnStartGame;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         /// <summary>
@@ -2003,6 +2057,13 @@ public partial class @DKinputSystem_Actions: IInputActionCollection2, IDisposabl
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnStartGame(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPause(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

@@ -33,6 +33,11 @@ namespace _MyFiles.Scripts.Puppet
         [Tooltip("Drag the child GameObject containing the Hammer collider here.")]
         [SerializeField] private GameObject hammerHitboxObject;
 
+        [Header("Audio")]
+        [SerializeField] private AudioSource movementAudioSource; 
+        [SerializeField] private AudioClip walkClimbClip;
+        [SerializeField] private AudioClip jumpClip;
+
         [Header("Debug States")]
         [SerializeField] private float moveInput;
         [SerializeField] private float climbingInput;
@@ -44,6 +49,9 @@ namespace _MyFiles.Scripts.Puppet
 
         [SerializeField] private LadderData currentLadder;
         [SerializeField] private bool isFacingRight = false;
+
+        private Vector3 savedVelocity;
+        private bool wasPaused = false;
 
         private void Start()
         {
@@ -58,8 +66,22 @@ namespace _MyFiles.Scripts.Puppet
 
         private void Update()
         {
+
+            //Pause the animator if the game is paused!
+            if (puppetAnimator != null)
+            {
+                // Pause the animation if the game is Paused OR in HitStop!
+                puppetAnimator.speed = (GameManager.Instance.CurrentState == GameManager.ArcadeState.Paused ||
+                                        GameManager.Instance.CurrentState == GameManager.ArcadeState.HitStop) ? 0f : 1f;
+            }
+
             // if the input manager is null or If the arcade machine isn't actively playing a game just ignore all inputs and physics
-            if (!inputManager || GameManager.Instance.CurrentState != GameManager.ArcadeState.Playing) return;
+            if (!inputManager || GameManager.Instance.CurrentState != GameManager.ArcadeState.Playing) 
+            {
+                // Ensure looping audio stops if paused or dead
+                if (movementAudioSource != null && movementAudioSource.isPlaying) movementAudioSource.Stop();
+                return;
+            }
 
             Vector3 rayStart = transform.position + (Vector3.up * groundCheckOffset);
             bIsGrounded = Physics.Raycast(rayStart, Vector3.down, groundCheckDistance, groundLayer, QueryTriggerInteraction.Ignore);
@@ -72,6 +94,9 @@ namespace _MyFiles.Scripts.Puppet
             }
 
             climbingInput = moveVector.y;
+
+            // Handle the looping audio
+            HandleMovementAudio();
 
             //Feed data to the Animator
             if (puppetAnimator != null)
@@ -116,8 +141,35 @@ namespace _MyFiles.Scripts.Puppet
 
         private void FixedUpdate()
         {
-            //If the arcade machine isn't actively playing a game just ignore all inputs and physics
-            if (GameManager.Instance.CurrentState != GameManager.ArcadeState.Playing) return;
+            // --- Pause Logic ---
+            if (GameManager.Instance.CurrentState != GameManager.ArcadeState.Playing)
+            {
+                if (!wasPaused)
+                {
+                    // Only save momentum and freeze if we aren't already kinematic (like when climbing)
+                    if (!jumpManRigidbody.isKinematic)
+                    {
+                        savedVelocity = jumpManRigidbody.linearVelocity;
+                        jumpManRigidbody.isKinematic = true;
+                    }
+                    wasPaused = true;
+                }
+                return; // Stop the rest of the movement code
+            }
+            else if (wasPaused)
+            {
+                // We are unpausing!
+                wasPaused = false;
+
+                // Only restore physics if we aren't currently on a ladder
+                if (!bIsClimbing)
+                {
+                    jumpManRigidbody.isKinematic = false;
+                    jumpManRigidbody.WakeUp();
+                    jumpManRigidbody.linearVelocity = savedVelocity;
+                }
+            }
+            // -----------------------
 
             if (bIsClimbing && currentLadder != null)
             {
@@ -164,6 +216,30 @@ namespace _MyFiles.Scripts.Puppet
             }
         }
 
+        private void HandleMovementAudio()
+        {
+            if (movementAudioSource == null || walkClimbClip == null) return;
+
+            bool isWalking = bIsGrounded && Mathf.Abs(moveInput) > 0.1f && !bIsClimbing;
+            bool isClimbingActive = bIsClimbing && Mathf.Abs(climbingInput) > 0.1f;
+
+            if (isWalking || isClimbingActive)
+            {
+                if (!movementAudioSource.isPlaying)
+                {
+                    movementAudioSource.clip = walkClimbClip;
+                    movementAudioSource.loop = true;
+                    movementAudioSource.Play();
+                }
+
+                movementAudioSource.pitch = isClimbingActive ? 0.8f : 1.0f;
+            }
+            else
+            {
+                movementAudioSource.Stop();
+            }
+        }
+
         private void StartClimbing(Transform startNode)
         {
             bIsClimbing = true;
@@ -197,6 +273,7 @@ namespace _MyFiles.Scripts.Puppet
             if (!bIsClimbing && bIsGrounded && !bHasHammer)
             {
                 jumpManRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                DKAudioManager.Instance.PlaySFX(jumpClip); 
             }
         }
 
@@ -212,8 +289,20 @@ namespace _MyFiles.Scripts.Puppet
             // Pick up the Hammer!
             if (other.CompareTag("HammerPickup"))
             {
-                //Turn it off instead of Destroying it
                 other.gameObject.SetActive(false);
+
+                //Tell the Animator about the hammer IMMEDIATELY 
+                bHasHammer = true;
+                if (puppetAnimator != null)
+                {
+                    puppetAnimator.SetBool("HasHammer", true);
+                    // Force the animator to instantly process the new boolean before we freeze it!
+                    puppetAnimator.Update(0f);
+                }
+
+                // Freeze the game for 0.15 seconds to emphasize the power-up!
+                GameManager.Instance.TriggerHitStop(0.15f);
+
                 StartCoroutine(HammerTimerRoutine());
             }
         }
@@ -235,10 +324,7 @@ namespace _MyFiles.Scripts.Puppet
             // If a barrel hits the player lose a life
             if (collision.gameObject.CompareTag("Barrel"))
             {
-                //Trigger the death animation!
-                if (puppetAnimator != null) puppetAnimator.SetTrigger("Die");
-
-                GameManager.Instance.LoseLife();
+                KillPlayer();
             }
         }
 
@@ -254,6 +340,9 @@ namespace _MyFiles.Scripts.Puppet
             currentLadder = null;
             bHasHammer = false;
             isFacingRight = true;
+
+            wasPaused = false;
+
             if (hammerHitboxObject != null) hammerHitboxObject.SetActive(false);
             StopAllCoroutines(); // Stops the hammer timer if it was running
 
@@ -270,6 +359,7 @@ namespace _MyFiles.Scripts.Puppet
             {
                 puppetAnimator.ResetTrigger("Die");
                 puppetAnimator.Play("Idle");
+                puppetAnimator.SetBool("HasHammer", false);
             }
         }
         private IEnumerator HammerTimerRoutine()
@@ -277,11 +367,26 @@ namespace _MyFiles.Scripts.Puppet
             bHasHammer = true;
             if (hammerHitboxObject != null) hammerHitboxObject.SetActive(true);
 
+            DKAudioManager.Instance.PlayMusic(DKAudioManager.Instance.musicHammer);
+
             // Classic arcade hammer lasts about 10 seconds
             yield return new WaitForSeconds(10f);
 
             bHasHammer = false;
             if (hammerHitboxObject != null) hammerHitboxObject.SetActive(false);
+
+            if (GameManager.Instance.CurrentState == GameManager.ArcadeState.Playing)
+            {
+                DKAudioManager.Instance.PlayMusic(DKAudioManager.Instance.musicLevel1);
+            }
+        }
+        public void KillPlayer()
+        {
+            // Trigger the death animation
+            if (puppetAnimator != null) puppetAnimator.SetTrigger("Die");
+
+            // Tell the GameManager to handle the sequence
+            GameManager.Instance.LoseLife();
         }
     }
 }

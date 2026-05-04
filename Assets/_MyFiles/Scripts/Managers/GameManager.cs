@@ -6,14 +6,14 @@ using TMPro;
 using UnityEngine;
 
 namespace _MyFiles.Scripts.Managers
-{ 
+{
     public class GameManager : MonoBehaviour
     {
         // The Singleton Instance
         public static GameManager Instance { get; private set; }
 
-        //Game State Machine
-        public enum ArcadeState { AttractMode, CreditLoaded, Playing, Respawning, GameOver }
+       //Enums to manage the game state of DK arcade Cabniet
+        public enum ArcadeState { AttractMode, CreditLoaded, Starting, Playing, Respawning, GameOver, Paused, HitStop }
         public ArcadeState CurrentState { get; private set; } = ArcadeState.AttractMode;
 
         // The specific DK Pause State
@@ -24,6 +24,7 @@ namespace _MyFiles.Scripts.Managers
         [SerializeField] private GameObject hudPanel;
         [SerializeField] private GameObject winPanel;
         [SerializeField] private GameObject gameOverPanel;
+        [SerializeField] private GameObject pauseTextPrompt;
 
         [Header("HUD Text Elements")]
         [SerializeField] private TextMeshProUGUI scoreText;
@@ -56,13 +57,35 @@ namespace _MyFiles.Scripts.Managers
             if (Instance != null && Instance != this) { Destroy(gameObject); return; }
             Instance = this;
         }
+
         private void Start()
         {
+            if (pauseTextPrompt != null) pauseTextPrompt.SetActive(false);
             // Start the cabinet in Attract Mode ie (Waiting for coin)
             ResetToAttractMode();
         }
 
         // --- Arcade Flow  ---
+
+        // Handles the pause logic triggered by the Input Manager
+        public void TogglePause()
+        {
+            // This 'if' statement is what guarantees you can only pause during actual gameplay!
+            if (CurrentState == ArcadeState.Playing)
+            {
+                CurrentState = ArcadeState.Paused;
+                DKAudioManager.Instance.PlaySFX(DKAudioManager.Instance.sfxPause);
+                DKAudioManager.Instance.StopMusic();
+                if (pauseTextPrompt != null) pauseTextPrompt.SetActive(true);
+            }
+            else if (CurrentState == ArcadeState.Paused)
+            {
+                CurrentState = ArcadeState.Playing;
+                DKAudioManager.Instance.PlaySFX(DKAudioManager.Instance.sfxPause);
+                DKAudioManager.Instance.PlayMusic(DKAudioManager.Instance.musicLevel1);
+                if (pauseTextPrompt != null) pauseTextPrompt.SetActive(false);
+            }
+        }
 
         public void InsertCoin()
         {
@@ -75,6 +98,7 @@ namespace _MyFiles.Scripts.Managers
                 if (insertCoinPromptText != null)
                     insertCoinPromptText.text = "CREDIT 1\nPRESS START";
 
+                DKAudioManager.Instance.PlaySFX(DKAudioManager.Instance.sfxScore); // Quick feedback beep
                 Debug.Log("Coin Inserted! Waiting for Start.");
             }
         }
@@ -84,23 +108,27 @@ namespace _MyFiles.Scripts.Managers
             // Only start if a coin is loaded
             if (CurrentState == ArcadeState.CreditLoaded)
             {
+                //Immediately change state so this can't be spammed
+                CurrentState = ArcadeState.Starting;
                 StartCoroutine(StartGameSequence());
             }
         }
 
         private IEnumerator StartGameSequence()
         {
-            // 1. Show the HUD, Hide the Main Menu
+            //Show the HUD, Hide the Main Menu
             currentLives = 3;
             currentScore = 0;
             UpdateHUD();
+
+            DKAudioManager.Instance.StopMusic();
+            DKAudioManager.Instance.PlaySFX(DKAudioManager.Instance.sfxIntro);
+
+            // Wait for intro length
+            if (DKAudioManager.Instance.sfxIntro != null)
+                yield return new WaitForSeconds(DKAudioManager.Instance.sfxIntro.length);
+
             ShowPanel(hudPanel);
-
-            // 2. Play the classic DK Start Jingle here!
-            Debug.Log("Playing Start Jingle...");
-
-            // 3. Wait for the jingle to finish
-            yield return new WaitForSeconds(startDelay);
 
             //Destroy all barrels on the screen
             GameObject[] activeBarrels = GameObject.FindGameObjectsWithTag("Barrel");
@@ -122,11 +150,15 @@ namespace _MyFiles.Scripts.Managers
                 if (hammer != null) hammer.SetActive(true);
             }
 
-            // 4. Give the player control and start the game!
-            CurrentState = ArcadeState.Playing;
-            Debug.Log("Game Started! Jumpman can move.");
+            // Play Start Level Audio
+            DKAudioManager.Instance.PlaySFX(DKAudioManager.Instance.sfxStartLevel);
+            if (DKAudioManager.Instance.sfxStartLevel != null)
+                yield return new WaitForSeconds(DKAudioManager.Instance.sfxStartLevel.length);
 
-            // Tell the Donkey Kong AI to start throwing barrels
+            // Give the player control and start the game!
+            CurrentState = ArcadeState.Playing;
+            DKAudioManager.Instance.PlayMusic(DKAudioManager.Instance.musicLevel1);
+            Debug.Log("Game Started! Jumpman can move.");
         }
 
         public void ResetToAttractMode()
@@ -136,8 +168,7 @@ namespace _MyFiles.Scripts.Managers
                 insertCoinPromptText.text = "INSERT COIN";
 
             ShowPanel(mainMenuPanel);
-
-            //Reset Jumpman and Donkey Kong to their starting positions
+            DKAudioManager.Instance.PlayMusic(DKAudioManager.Instance.musicAttract);
         }
 
         //-- Gameplay Logic --
@@ -147,6 +178,9 @@ namespace _MyFiles.Scripts.Managers
 
             CurrentState = ArcadeState.GameOver;
             ShowPanel(winPanel);
+
+            DKAudioManager.Instance.StopMusic();
+            DKAudioManager.Instance.PlaySFX(DKAudioManager.Instance.sfxWin);
 
             // Go back to the title screen after 5 seconds
             Invoke(nameof(ResetToAttractMode), 5f);
@@ -158,6 +192,9 @@ namespace _MyFiles.Scripts.Managers
 
             currentLives--;
             UpdateHUD();
+
+            DKAudioManager.Instance.StopMusic();
+            DKAudioManager.Instance.PlaySFX(DKAudioManager.Instance.sfxDeath);
 
             if (currentLives <= 0)
             {
@@ -178,7 +215,6 @@ namespace _MyFiles.Scripts.Managers
             Debug.Log("Jumpman died! Freezing game...");
 
             //Wait a moment so the player sees their death
-            yield return new WaitForSeconds(2f);
 
             //Destroy all barrels on the screen
             GameObject[] activeBarrels = GameObject.FindGameObjectsWithTag("Barrel");
@@ -200,8 +236,16 @@ namespace _MyFiles.Scripts.Managers
                 if (hammer != null) hammer.SetActive(true);
             }
 
+            yield return new WaitForSeconds(2f);
+
+            //Play Start Level again when respawning
+            DKAudioManager.Instance.PlaySFX(DKAudioManager.Instance.sfxStartLevel);
+            if (DKAudioManager.Instance.sfxStartLevel != null)
+                yield return new WaitForSeconds(DKAudioManager.Instance.sfxStartLevel.length);
+
             //Resume gameplay
             CurrentState = ArcadeState.Playing;
+            DKAudioManager.Instance.PlayMusic(DKAudioManager.Instance.musicLevel1);
             Debug.Log("Board reset! Resuming Gameplay...");
         }
 
@@ -236,6 +280,28 @@ namespace _MyFiles.Scripts.Managers
         public void SetDKPaused(bool isPaused)
         {
             IsDKPaused = isPaused;
+        }
+        public void TriggerHitStop(float duration = 0.1f)
+        {
+            // Only allow hit stop if the game is actively playing
+            if (CurrentState == ArcadeState.Playing)
+            {
+                StartCoroutine(HitStopRoutine(duration));
+            }
+        }
+
+        private IEnumerator HitStopRoutine(float duration)
+        {
+            CurrentState = ArcadeState.HitStop;
+
+            // Use realtime so it ignores any other time-scale weirdness
+            yield return new WaitForSecondsRealtime(duration);
+
+            // Ensure we didn't die or hit Pause during the freeze before giving control back
+            if (CurrentState == ArcadeState.HitStop)
+            {
+                CurrentState = ArcadeState.Playing;
+            }
         }
     }
 }

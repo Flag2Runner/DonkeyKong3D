@@ -53,12 +53,24 @@ namespace _MyFiles.Scripts.Puppet
 
         private void Update()
         {
+            if (puppetAnimator != null)
+            {
+                // Pause the animation if the game is Paused OR in HitStop!
+                puppetAnimator.speed = (GameManager.Instance.CurrentState == ArcadeState.Paused ||
+                                        GameManager.Instance.CurrentState == ArcadeState.HitStop) ? 0f : 1f;
+            }
+
             if (GameManager.Instance.CurrentState == ArcadeState.Playing)
             {
                 if (!isThrowingRoutineRunning) StartCoroutine(ThrowBarrelRoutine());
             }
 
-            if (isThrowingRoutineRunning == true && GameManager.Instance.CurrentState != ArcadeState.Playing)
+            //ONLY stop the routine if we actually died or the game ended.
+            // DO NOT stop it if we just Paused!
+            if (isThrowingRoutineRunning == true &&
+               (GameManager.Instance.CurrentState == ArcadeState.Respawning ||
+                GameManager.Instance.CurrentState == ArcadeState.GameOver ||
+                GameManager.Instance.CurrentState == ArcadeState.AttractMode))
             {
                 StopAllCoroutines();
                 isThrowingRoutineRunning = false;
@@ -75,21 +87,29 @@ namespace _MyFiles.Scripts.Puppet
             isThrowingRoutineRunning = true;
 
             float waitTime = Random.Range(minTimeBetweenThrows, maxTimeBetweenThrows);
-            yield return new WaitForSeconds(waitTime);
+            float timer = 0f;
+
+            //A custom timer that freezes completely when paused!
+            while (timer < waitTime)
+            {
+                if (GameManager.Instance.CurrentState == ArcadeState.Playing)
+                {
+                    timer += Time.deltaTime;
+                }
+                yield return null;
+            }
 
             // --- Sync Logic ---
-            //Tell the animator what kind of throw this will be
+            // Tell the animator what kind of throw this will be
             bool willBeSniperOrIgniter = (totalBarrelsThrown == 0) || (barrelsSinceLastSnipe >= barrelsBeforeSnipeChance && Random.value <= snipeChance);
 
             Transform activeSpawn = willBeSniperOrIgniter ? overhandSpawn : underhandSpawn;
 
             if (puppetAnimator != null)
             {
-                // Let's say Type 0 is normal roll, Type 1 is overhand targeted throw
                 puppetAnimator.SetInteger("ThrowType", willBeSniperOrIgniter ? 1 : 0);
                 puppetAnimator.SetTrigger("Throw");
 
-                // Pause this Coroutine right here! Wait for the Animation Event to unpause us.
                 isWaitingForAnimationToFinish = true;
                 while (isWaitingForAnimationToFinish)
                 {
@@ -97,8 +117,6 @@ namespace _MyFiles.Scripts.Puppet
                 }
             }
             // ----------------------------------
-
-            // By the time the code reaches here, the animation has reached the release frame
 
             // Instantiate at the chosen point
             GameObject newBarrel = Instantiate(barrelPrefab, activeSpawn.position, activeSpawn.rotation);
@@ -116,20 +134,17 @@ namespace _MyFiles.Scripts.Puppet
             {
                 if (totalBarrelsThrown == 0 && jumpmanStartNode != null)
                 {
-                    // Igniter
                     barrelScript.ThrowAtTarget(jumpmanStartNode.position, igniterZOffset, true);
                     barrelsSinceLastSnipe++;
                 }
                 else if (willBeSniperOrIgniter && jumpmanTransform != null)
                 {
-                    // Sniper
                     Debug.Log("DK is Sniping the Player!");
                     barrelScript.ThrowAtTarget(jumpmanTransform.position, sniperZOffset, false);
                     barrelsSinceLastSnipe = 0;
                 }
                 else
                 {
-                    // Normal Throw
                     barrelScript.InitialPush(throwDirection);
                     barrelsSinceLastSnipe++;
                 }

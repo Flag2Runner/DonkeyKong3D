@@ -1,11 +1,11 @@
 using System.Collections;
 using _MyFiles.Scripts.Managers;
-using _MyFiles.Scripts.Environment; // To access the ArcadeCabinet script
+using _MyFiles.Scripts.Environment;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace _MyFiles.Scripts.Player
-{ 
+{
     public class ArcadeInteractor : MonoBehaviour
     {
         [Header("References")]
@@ -15,14 +15,24 @@ namespace _MyFiles.Scripts.Player
 
         [Header("Settings")]
         [SerializeField] private float TransitionSpeed = 2f;
+        [Tooltip("How fast the camera snaps left and right when leaning.")]
+        [SerializeField] private float LeanSpeed = 8f;
 
-        [Header("Private")]
-        [SerializeField]private bool bIsTransitioning = false;
+        [Header("Private States")]
+        [SerializeField] private bool bIsTransitioning = false;
         [SerializeField] private bool bIsPlayingArcade = false;
 
         //Tracks the cabinet we are currently standing in front of
         [SerializeField] private ArcadeCabinet NearbyCabinet = null;
-        [SerializeField] private Transform ActiveScreenAnchor = null;
+
+        // Lean Anchors
+        private Transform centerAnchor = null;
+        private Transform leftAnchor = null;
+        private Transform rightAnchor = null;
+        private Transform currentTargetAnchor = null;
+
+        // Toggle Lock
+        private bool wasLeaningInputActiveLastFrame = false;
 
         private void Start()
         {
@@ -30,10 +40,47 @@ namespace _MyFiles.Scripts.Player
             InputManager.InputActions.PlayerLockedIn.Exit_Cabinet.performed += ExitArcade;
         }
 
+        private void Update()
+        {
+            // Only allow leaning if we are actively playing and NOT currently sitting down/standing up
+            if (bIsPlayingArcade && !bIsTransitioning && centerAnchor != null)
+            {
+                HandleLeaning();
+            }
+        }
+
+        private void HandleLeaning()
+        {
+            // Read the 1D Axis. Q is Negative (-1), E is Positive (1). Nothing pressed is (0).
+            float leanInput = InputManager.InputActions.PlayerLockedIn.DK_Lean.ReadValue<float>();
+            bool isLeaningInputActive = Mathf.Abs(leanInput) > 0.1f;
+
+            // Only trigger the logic on the exact frame they push the button down
+            if (isLeaningInputActive && !wasLeaningInputActiveLastFrame)
+            {
+                if (leanInput < -0.1f && leftAnchor != null) // Pressed Q (Left)
+                {
+                    // If we are already left, toggle back to center. Otherwise, go left!
+                    currentTargetAnchor = (currentTargetAnchor == leftAnchor) ? centerAnchor : leftAnchor;
+                }
+                else if (leanInput > 0.1f && rightAnchor != null) // Pressed E (Right)
+                {
+                    // If we are already right, toggle back to center. Otherwise, go right!
+                    currentTargetAnchor = (currentTargetAnchor == rightAnchor) ? centerAnchor : rightAnchor;
+                }
+            }
+
+            // Save this frame's input state so we don't rapid-fire the toggle next frame
+            wasLeaningInputActiveLastFrame = isLeaningInputActive;
+
+            // Smoothly glide the camera towards whichever anchor is currently targeted
+            PlayerCamera.transform.position = Vector3.Lerp(PlayerCamera.transform.position, currentTargetAnchor.position, Time.deltaTime * LeanSpeed);
+            PlayerCamera.transform.rotation = Quaternion.Lerp(PlayerCamera.transform.rotation, currentTargetAnchor.rotation, Time.deltaTime * LeanSpeed);
+        }
+
         // --- Trigger Logic ---
         private void OnTriggerEnter(Collider other)
         {
-            // If the trigger we walked into has an ArcadeCabinet script, remember it!
             if (other.TryGetComponent(out ArcadeCabinet cabinet))
             {
                 NearbyCabinet = cabinet;
@@ -42,7 +89,6 @@ namespace _MyFiles.Scripts.Player
 
         private void OnTriggerExit(Collider other)
         {
-            // If we walk away from the cabinet we remembered, forget it!
             if (other.TryGetComponent(out ArcadeCabinet cabinet) && cabinet == NearbyCabinet)
             {
                 NearbyCabinet = null;
@@ -55,10 +101,17 @@ namespace _MyFiles.Scripts.Player
             Debug.Log("Player Interacted");
             if (bIsTransitioning || bIsPlayingArcade) return;
 
-            // If we press E and we are standing near a cabinet, start the transition!
             if (NearbyCabinet != null)
             {
-                ActiveScreenAnchor = NearbyCabinet.ScreenAnchor;
+                // Grab all 3 anchors from the cabinet
+                centerAnchor = NearbyCabinet.CenterScreenAnchor;
+                leftAnchor = NearbyCabinet.LeftScreenAnchor;
+                rightAnchor = NearbyCabinet.RightScreenAnchor;
+
+                // Default to the middle
+                currentTargetAnchor = centerAnchor;
+                wasLeaningInputActiveLastFrame = false; // Reset the toggle lock
+
                 StartCoroutine(TransitionToArcade());
             }
         }
@@ -70,13 +123,12 @@ namespace _MyFiles.Scripts.Player
             StartCoroutine(TransitionToFreeRoam());
         }
 
-        // --- Corutines ---
+        // --- Coroutines ---
         private IEnumerator TransitionToArcade()
         {
             bIsTransitioning = true;
             InputManager.InputActions.PlayerFreeRoaming.Disable();
 
-            // Grab the exact starting position of the camera right now
             Vector3 startPos = PlayerCamera.transform.position;
             Quaternion startRot = PlayerCamera.transform.rotation;
 
@@ -86,9 +138,9 @@ namespace _MyFiles.Scripts.Player
                 t += Time.deltaTime * TransitionSpeed;
                 float smoothT = Mathf.SmoothStep(0, 1, t);
 
-                // Lerp from where we actually are, to the anchor
-                PlayerCamera.transform.position = Vector3.Lerp(startPos, ActiveScreenAnchor.position, smoothT);
-                PlayerCamera.transform.rotation = Quaternion.Lerp(startRot, ActiveScreenAnchor.rotation, smoothT);
+                // Lerp smoothly to the CENTER anchor when sitting down
+                PlayerCamera.transform.position = Vector3.Lerp(startPos, centerAnchor.position, smoothT);
+                PlayerCamera.transform.rotation = Quaternion.Lerp(startRot, centerAnchor.rotation, smoothT);
                 yield return null;
             }
 
@@ -102,7 +154,7 @@ namespace _MyFiles.Scripts.Player
             bIsTransitioning = true;
             InputManager.InputActions.PlayerLockedIn.Disable();
 
-            // Grab the exact starting position of the camera right now
+            // Grab exactly where the camera is right now (even if they were mid-lean!)
             Vector3 startPos = PlayerCamera.transform.position;
             Quaternion startRot = PlayerCamera.transform.rotation;
 
@@ -112,14 +164,16 @@ namespace _MyFiles.Scripts.Player
                 t += Time.deltaTime * TransitionSpeed;
                 float smoothT = Mathf.SmoothStep(0, 1, t);
 
-                // Lerp from where we actually are, to the head bone
                 PlayerCamera.transform.position = Vector3.Lerp(startPos, CameraHeadBone.position, smoothT);
                 PlayerCamera.transform.rotation = Quaternion.Lerp(startRot, CameraHeadBone.rotation, smoothT);
                 yield return null;
             }
 
-            // Clear the anchor since we left
-            ActiveScreenAnchor = null;
+            // Clear the anchors since we left
+            centerAnchor = null;
+            leftAnchor = null;
+            rightAnchor = null;
+            currentTargetAnchor = null;
 
             InputManager.EnableFreeRoam();
             bIsPlayingArcade = false;

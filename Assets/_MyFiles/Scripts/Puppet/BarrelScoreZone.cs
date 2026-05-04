@@ -24,7 +24,7 @@ namespace _MyFiles.Scripts.Puppet
 
             //Lock the rotation upright so it doesn't spin
             transform.rotation = Quaternion.identity;
- 
+
             // Force the box to sit exactly straight up from the barrel's center, ignoring its rotation.
             transform.position = parentBarrel.position + (Vector3.up * verticalOffset);
         }
@@ -33,14 +33,16 @@ namespace _MyFiles.Scripts.Puppet
         {
             if (hasScored) return;
 
-            // Did Jumpman just pass through this trigger?
+            // Did Jumpman just pass through this trigger
             if (other.TryGetComponent(out BasicGiantMover jumpman))
             {
-                // Check the public getter! Is he in the air?
+                // Check if he is in the air
                 if (!jumpman.IsGrounded)
                 {
                     GameManager.Instance.AddScore(100);
                     hasScored = true;
+
+                    DKAudioManager.Instance.PlaySFX(DKAudioManager.Instance.sfxScore);
                     Debug.Log("Jumped over barrel! +100 Points");
                 }
             }

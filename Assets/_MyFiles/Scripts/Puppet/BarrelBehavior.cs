@@ -24,6 +24,11 @@ namespace _MyFiles.Scripts.Puppet
         [SerializeField] private bool isBeingThrownToTarget = false;
         private bool needsLandingPush = false;
 
+        //Variables to save momentum
+        private Vector3 savedVelocity;
+        private Vector3 savedAngularVelocity;
+        private bool wasPaused = false;
+
         private void Start()
         {
             barrelRigidBody = GetComponent<Rigidbody>();
@@ -34,8 +39,35 @@ namespace _MyFiles.Scripts.Puppet
         {
             if (GameManager.Instance.CurrentState != GameManager.ArcadeState.Playing)
             {
-                barrelRigidBody.isKinematic = true;
+
+                if (!wasPaused)
+                {
+                    // Catch the exact speed right before we freeze it
+                    if (!barrelRigidBody.isKinematic)
+                    {
+                        savedVelocity = barrelRigidBody.linearVelocity;
+                        savedAngularVelocity = barrelRigidBody.angularVelocity;
+                    }
+                    barrelRigidBody.isKinematic = true;
+                    wasPaused = true;
+                }
                 return;
+            }
+            else if (wasPaused)
+            {
+                // We are unpausing
+                wasPaused = false;
+
+                // Only restore momentum if it's not currently being forced down a ladder or through the air
+                if (!isDropping && !isBeingThrownToTarget)
+                {
+                    barrelRigidBody.isKinematic = false;
+                    barrelRigidBody.WakeUp();
+
+                    // Shove the momentum back in
+                    barrelRigidBody.linearVelocity = savedVelocity;
+                    barrelRigidBody.angularVelocity = savedAngularVelocity;
+                }
             }
 
             if (!isDropping && !isBeingThrownToTarget && barrelRigidBody.isKinematic)
@@ -83,7 +115,7 @@ namespace _MyFiles.Scripts.Puppet
                     return; // Ignore this collision and wait for the next one!
                 }
 
-                // We officially hit the floor! Consume the push.
+                //Hit the floor Consume the push.
                 needsLandingPush = false;
 
                 // Racast Check: Shoot a raycast straight down from the center of the barrel.
@@ -141,8 +173,12 @@ namespace _MyFiles.Scripts.Puppet
 
             if (other.gameObject.layer == LayerMask.NameToLayer("Hammer"))
             {
-                // Play explosion puppet/effect
                 GameManager.Instance.AddScore(500);
+                DKAudioManager.Instance.PlaySFX(DKAudioManager.Instance.sfxSmash);
+
+                // A quick 0.08 second crunch for every barrel smashed!
+                GameManager.Instance.TriggerHitStop(0.08f);
+
                 Destroy(gameObject);
             }
         }
