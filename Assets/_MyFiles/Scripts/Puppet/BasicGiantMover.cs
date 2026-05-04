@@ -43,7 +43,7 @@ namespace _MyFiles.Scripts.Puppet
         [SerializeField] private bool bHasHammer = false;
 
         [SerializeField] private LadderData currentLadder;
-        [SerializeField] private bool isFacingRight = true;
+        [SerializeField] private bool isFacingRight = false;
 
         private void Start()
         {
@@ -85,14 +85,14 @@ namespace _MyFiles.Scripts.Puppet
             }
 
             //Flip the character model left or right
-            if (moveInput > 0.1f && !isFacingRight && !bIsClimbing)
-            {
-                isFacingRight = true;
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
-            else if (moveInput < -0.1f && isFacingRight && !bIsClimbing)
+            if (moveInput > 0.1f && isFacingRight && !bIsClimbing)
             {
                 isFacingRight = false;
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else if (moveInput < -0.1f && !isFacingRight && !bIsClimbing)
+            {
+                isFacingRight = true;
                 transform.rotation = Quaternion.Euler(0, 180, 0); // Flips the Master, and PuppetSync will copy it
             }
 
@@ -167,6 +167,7 @@ namespace _MyFiles.Scripts.Puppet
         private void StartClimbing(Transform startNode)
         {
             bIsClimbing = true;
+            puppetAnimator.SetBool("IsClimbing", bIsClimbing);
             jumpManRigidbody.isKinematic = true;
             jumpManRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 
@@ -180,7 +181,7 @@ namespace _MyFiles.Scripts.Puppet
         private void StopClimbing(bool reachedTop)
         {
             bIsClimbing = false;
-
+            puppetAnimator.SetBool("IsClimbing", bIsClimbing);
             // Apply a microscopic vertical nudge before physics reactivates to prevent floor clipping
             if (reachedTop)
             {
@@ -204,15 +205,15 @@ namespace _MyFiles.Scripts.Puppet
             LadderData ladder = other.GetComponent<LadderData>();
             if (ladder != null)
             {
-                // Remember the ladder data, and tell the script we are allowed to climb
                 currentLadder = ladder;
                 bIsInLadderZone = true;
             }
 
-            //Pick up the Hammer (Need to make sure hammer items in the scene have this tag)
+            // Pick up the Hammer!
             if (other.CompareTag("HammerPickup"))
             {
-                Destroy(other.gameObject); // Remove the item from the map
+                //Turn it off instead of Destroying it
+                other.gameObject.SetActive(false);
                 StartCoroutine(HammerTimerRoutine());
             }
         }
@@ -252,6 +253,7 @@ namespace _MyFiles.Scripts.Puppet
             bIsInLadderZone = false;
             currentLadder = null;
             bHasHammer = false;
+            isFacingRight = true;
             if (hammerHitboxObject != null) hammerHitboxObject.SetActive(false);
             StopAllCoroutines(); // Stops the hammer timer if it was running
 

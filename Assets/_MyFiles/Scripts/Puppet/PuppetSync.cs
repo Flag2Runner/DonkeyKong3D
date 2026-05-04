@@ -11,9 +11,28 @@ public class PuppetSync : MonoBehaviour
     [Tooltip("How much smaller the puppet is. (e.g, 0.1 for 1/10th scale)")]
     [SerializeField] private float scaleDownFactor = 0.024f;
 
+    [SerializeField] private Vector3 SavedScale = Vector3.zero;
+
+    private void Start()
+    {
+        SavedScale = transform.localScale;
+    }
+
     private void Update()
     {
         if (!masterTarget || !masterLevelCenter || !dioramaCenter) return;
+
+        //If the Master is turned off, shrink the Puppet to nothing so it "disappears"
+        if (!masterTarget.gameObject.activeInHierarchy)
+        {
+            transform.localScale = Vector3.zero;
+            return; // Skip the rest of the math until it turns back on
+        }
+        else
+        {
+            // Restore its normal scale when the master comes back
+            transform.localScale = SavedScale;
+        }
 
         // Find exactly where the master object is relative to its own floor
         Vector3 offsetFromMasterCenter = masterTarget.position - masterLevelCenter.position;

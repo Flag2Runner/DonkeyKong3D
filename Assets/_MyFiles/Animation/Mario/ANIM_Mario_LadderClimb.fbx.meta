@@ -1,0 +1,1049 @@
+fileFormatVersion: 2
+guid: cc5ff70a1ad21e341bcf309fbd70d611
+ModelImporter:
+  serializedVersion: 24200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'ANIM_Mario_LadderClimb' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'new_mario_rig:NeckPart1_M'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'new_mario_rig:Head_M'
+      has translation animation that will be discarded.\n\t'new_mario_rig:Head_M'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'new_mario_rig:ShoulderPart2_R'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'new_mario_rig:ElbowPart1_R'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'new_mario_rig:Wrist_R'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'new_mario_rig:ShoulderPart2_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'new_mario_rig:ElbowPart1_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'new_mario_rig:Wrist_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'new_mario_rig:Hip_R'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'new_mario_rig:HipPart2_R'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'new_mario_rig:Hip_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'new_mario_rig:HipPart2_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: ANIM_Mario_LadderClimb
+      takeName: ANIM_Mario_LadderClimb
+      internalID: 6123996877254908639
+      firstFrame: 151
+      lastFrame: 168
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 150.90001
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: new_mario_rig:Root_M
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:HipPart1_L
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:HipPart1_R
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:Knee_L
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:Knee_R
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:Ankle_L
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:Ankle_R
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:RootPart1_M
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:RootPart2_M
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:Neck_M
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:NeckPart2_M
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:Shoulder_L
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:Shoulder_R
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:ShoulderPart1_L
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:ShoulderPart1_R
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:Elbow_L
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:Elbow_R
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:ElbowPart2_L
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:ElbowPart2_R
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:Toes_L
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:Toes_R
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:Eye_L
+      humanName: LeftEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:Eye_R
+      humanName: RightEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:Jaw_M
+      humanName: Jaw
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:ThumbFinger1_L
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:ThumbFinger2_L
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:ThumbFinger3_L
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:IndexFinger1_L
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:IndexFinger2_L
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:IndexFinger3_L
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:MiddleFinger1_L
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:MiddleFinger2_L
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:MiddleFinger3_L
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:RingFinger1_L
+      humanName: Left Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:RingFinger2_L
+      humanName: Left Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:RingFinger3_L
+      humanName: Left Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:PinkyFinger1_L
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:PinkyFinger2_L
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:PinkyFinger3_L
+      humanName: Left Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:ThumbFinger1_R
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:ThumbFinger2_R
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:ThumbFinger3_R
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:IndexFinger1_R
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:IndexFinger2_R
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:IndexFinger3_R
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:MiddleFinger1_R
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:MiddleFinger2_R
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:MiddleFinger3_R
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:RingFinger1_R
+      humanName: Right Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:RingFinger2_R
+      humanName: Right Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:RingFinger3_R
+      humanName: Right Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:PinkyFinger1_R
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:PinkyFinger2_R
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:PinkyFinger3_R
+      humanName: Right Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: new_mario_rig:Spine1Part2_M
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: ANIM_Mario_LadderClimb(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Root_M
+      parentName: ANIM_Mario_LadderClimb(Clone)
+      position: {x: 0.010588735, y: 1.0860417, z: -0.038864136}
+      rotation: {x: 0.5704583, y: -0.46704322, z: -0.5029534, w: 0.45109406}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:RootPart1_M
+      parentName: new_mario_rig:Root_M
+      position: {x: -0.16228554, y: 7.105427e-17, z: -7.105427e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:RootPart2_M
+      parentName: new_mario_rig:RootPart1_M
+      position: {x: -0.16228554, y: -2.1316282e-16, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Spine1_M
+      parentName: new_mario_rig:RootPart2_M
+      position: {x: -0.16228554, y: -1.4210854e-16, z: -4.2632563e-16}
+      rotation: {x: 0, y: 0, z: 0.11471756, w: 0.9933982}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Spine1Part1_M
+      parentName: new_mario_rig:Spine1_M
+      position: {x: -0.079653665, y: 0, z: -7.105427e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Spine1Part2_M
+      parentName: new_mario_rig:Spine1Part1_M
+      position: {x: -0.079653665, y: -2.842171e-16, z: -7.105427e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Chest_M
+      parentName: new_mario_rig:Spine1Part2_M
+      position: {x: -0.079653665, y: 1.4210854e-16, z: 7.105427e-17}
+      rotation: {x: 0, y: -0, z: -0.061278325, w: 0.9981207}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Neck_M
+      parentName: new_mario_rig:Chest_M
+      position: {x: -0.31381318, y: -2.842171e-16, z: 1.2789769e-15}
+      rotation: {x: 0, y: -0, z: -0.10073212, w: 0.9949136}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:NeckPart1_M
+      parentName: new_mario_rig:Neck_M
+      position: {x: -0.15273298, y: 6.483702e-16, z: 1.4210854e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:NeckPart2_M
+      parentName: new_mario_rig:NeckPart1_M
+      position: {x: -0.15273298, y: 9.725554e-16, z: -1.4210854e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Head_M
+      parentName: new_mario_rig:NeckPart2_M
+      position: {x: -0.14810666, y: -0.3356088, z: -0.0037860242}
+      rotation: {x: 0, y: 0, z: 0.47889718, w: 0.877871}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:HeadEnd_M
+      parentName: new_mario_rig:Head_M
+      position: {x: -0.82035106, y: 1.9984014e-16, z: 1.2318311e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Eye_R
+      parentName: new_mario_rig:Head_M
+      position: {x: -0.14285019, y: 0.3003136, z: -0.1713514}
+      rotation: {x: 0, y: -0, z: -0.7070041, w: 0.70720947}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:EyeEnd_R
+      parentName: new_mario_rig:Eye_R
+      position: {x: -1.3077649, y: -1.1368684e-15, z: 6.750156e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Jaw_M
+      parentName: new_mario_rig:Head_M
+      position: {x: 0.16103144, y: 0.102661796, z: -2.1316282e-16}
+      rotation: {x: 0, y: 0, z: 0.9167237, w: -0.3995218}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:JawEnd_M
+      parentName: new_mario_rig:Jaw_M
+      position: {x: -0.4936832, y: -1.9895197e-15, z: -6.389163e-19}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Eye_L
+      parentName: new_mario_rig:Head_M
+      position: {x: -0.14285019, y: 0.3003136, z: 0.1713514}
+      rotation: {x: 0, y: -0, z: -0.7070041, w: 0.70720947}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:EyeEnd_L
+      parentName: new_mario_rig:Eye_L
+      position: {x: -1.3077649, y: -1.1368684e-15, z: -6.750156e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Scapula_R
+      parentName: new_mario_rig:Chest_M
+      position: {x: -0.2088763, y: -0.020607678, z: -0.24643888}
+      rotation: {x: -0.01880174, y: -0.7186633, z: 0.0032334863, w: 0.6950965}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Shoulder_R
+      parentName: new_mario_rig:Scapula_R
+      position: {x: -0.20357807, y: 2.9132252e-15, z: -2.8421708e-15}
+      rotation: {x: -0.3057289, y: -0.022023313, z: 0.05723582, w: 0.9501415}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ShoulderPart1_R
+      parentName: new_mario_rig:Shoulder_R
+      position: {x: -0.118476324, y: 5.684342e-16, z: -2.842171e-16}
+      rotation: {x: 0.20463566, y: -0, z: -0, w: 0.9788382}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ShoulderPart2_R
+      parentName: new_mario_rig:ShoulderPart1_R
+      position: {x: -0.118476324, y: 5.684342e-16, z: -2.842171e-16}
+      rotation: {x: 0.20463566, y: -0, z: -0, w: 0.9788382}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Elbow_R
+      parentName: new_mario_rig:ShoulderPart2_R
+      position: {x: -0.118476324, y: 0, z: -1.1368684e-15}
+      rotation: {x: 0.1791134, y: -0.01704188, z: -0.033475284, w: 0.9831111}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ElbowPart1_R
+      parentName: new_mario_rig:Elbow_R
+      position: {x: -0.17686579, y: 2.842171e-16, z: 1.4210854e-15}
+      rotation: {x: 0.14754888, y: -0, z: -0, w: 0.9890548}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ElbowPart2_R
+      parentName: new_mario_rig:ElbowPart1_R
+      position: {x: -0.17686579, y: 2.842171e-16, z: 1.4210854e-15}
+      rotation: {x: 0.14688578, y: 0.056144442, z: -0.07626488, w: 0.98460954}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Wrist_R
+      parentName: new_mario_rig:ElbowPart2_R
+      position: {x: -0.17686579, y: 4.2632563e-16, z: 5.684342e-16}
+      rotation: {x: 0.43068337, y: -0.05487561, z: 0.2519633, w: 0.8648786}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:MiddleFinger1_R
+      parentName: new_mario_rig:Wrist_R
+      position: {x: -0.36332464, y: 0, z: -1.7053025e-15}
+      rotation: {x: -0.006725192, y: 0.018000392, z: -0.012869967, w: 0.9997326}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:MiddleFinger2_R
+      parentName: new_mario_rig:MiddleFinger1_R
+      position: {x: -0.10884032, y: 0, z: -7.105427e-16}
+      rotation: {x: 0.0013761786, y: -0.038313434, z: -0.004420818, w: 0.9992551}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:MiddleFinger3_R
+      parentName: new_mario_rig:MiddleFinger2_R
+      position: {x: -0.12823135, y: 2.842171e-16, z: -1.7053025e-15}
+      rotation: {x: 0.0050083552, y: -0.026562735, z: 0.0006935895, w: 0.9996344}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:MiddleFinger4_R
+      parentName: new_mario_rig:MiddleFinger3_R
+      position: {x: -0.11966461, y: 7.105427e-17, z: -1.1368684e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ThumbFinger1_R
+      parentName: new_mario_rig:Wrist_R
+      position: {x: -0.10376495, y: 0.07672708, z: -0.13930547}
+      rotation: {x: -0.567879, y: -0.30567852, z: -0.20153601, w: 0.73719555}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ThumbFinger2_R
+      parentName: new_mario_rig:ThumbFinger1_R
+      position: {x: -0.1432157, y: -1.1368684e-15, z: 1.4210854e-15}
+      rotation: {x: -0.03756266, y: -0.011587259, z: 0.01582485, w: 0.99910176}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ThumbFinger3_R
+      parentName: new_mario_rig:ThumbFinger2_R
+      position: {x: -0.15867792, y: 1.7763567e-16, z: 5.684342e-16}
+      rotation: {x: 0.032484576, y: 0.032968093, z: 0.023396868, w: 0.99865437}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ThumbFinger4_R
+      parentName: new_mario_rig:ThumbFinger3_R
+      position: {x: -0.14256646, y: -1.9895197e-15, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:IndexFinger1_R
+      parentName: new_mario_rig:Wrist_R
+      position: {x: -0.2625457, y: 0.11046917, z: 0.007721155}
+      rotation: {x: 0.001454562, y: -0.06939274, z: -0.017038416, w: 0.9974429}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:IndexFinger2_R
+      parentName: new_mario_rig:IndexFinger1_R
+      position: {x: -0.124319285, y: 1.1368684e-15, z: 1.7053025e-15}
+      rotation: {x: 0.030247264, y: 0.035226896, z: 0.012631111, w: 0.9988417}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:IndexFinger3_R
+      parentName: new_mario_rig:IndexFinger2_R
+      position: {x: -0.11811752, y: 0, z: 2.842171e-16}
+      rotation: {x: -0.0668408, y: -0.031183908, z: -0.008558653, w: 0.9972396}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:IndexFinger4_R
+      parentName: new_mario_rig:IndexFinger3_R
+      position: {x: -0.14674522, y: 0, z: 5.684342e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Cup_R
+      parentName: new_mario_rig:Wrist_R
+      position: {x: -0.056182936, y: -0.036165994, z: -0.004214021}
+      rotation: {x: 0.10605919, y: 0.029163154, z: 0.018185247, w: 0.9937657}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:PinkyFinger1_R
+      parentName: new_mario_rig:Cup_R
+      position: {x: -0.16285026, y: -0.14345235, z: -0.011471314}
+      rotation: {x: -0.16215278, y: -0.026046038, z: -0.031275842, w: 0.9859259}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:PinkyFinger2_R
+      parentName: new_mario_rig:PinkyFinger1_R
+      position: {x: -0.13390158, y: 0, z: 1.7053025e-15}
+      rotation: {x: 0.025539141, y: -0.030852454, z: -0.020085143, w: 0.9989957}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:PinkyFinger3_R
+      parentName: new_mario_rig:PinkyFinger2_R
+      position: {x: -0.1444117, y: 0, z: -3.410605e-15}
+      rotation: {x: 0.11364121, y: -0.02892487, z: -0.0043136, w: 0.9930914}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:PinkyFinger4_R
+      parentName: new_mario_rig:PinkyFinger3_R
+      position: {x: -0.11698461, y: 3.1974422e-16, z: -5.684342e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:RingFinger1_R
+      parentName: new_mario_rig:Cup_R
+      position: {x: -0.2694236, y: -0.045422472, z: 0.022460768}
+      rotation: {x: -0.106334746, y: -0.053968564, z: -0.019030642, w: 0.99268234}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:RingFinger2_R
+      parentName: new_mario_rig:RingFinger1_R
+      position: {x: -0.120645285, y: 0, z: 9.947598e-16}
+      rotation: {x: -0.00044653958, y: -0.023961421, z: -0.029378222, w: 0.99928105}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:RingFinger3_R
+      parentName: new_mario_rig:RingFinger2_R
+      position: {x: -0.11193729, y: 0, z: -9.947598e-16}
+      rotation: {x: 0.028210968, y: -0.027413327, z: 0.0034629926, w: 0.99922}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:RingFinger4_R
+      parentName: new_mario_rig:RingFinger3_R
+      position: {x: -0.14462252, y: -1.7763568e-17, z: -5.684342e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Scapula_L
+      parentName: new_mario_rig:Chest_M
+      position: {x: -0.2088763, y: -0.020607678, z: 0.24643888}
+      rotation: {x: 0.7186633, y: -0.018801762, z: 0.6950965, w: -0.003233463}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Shoulder_L
+      parentName: new_mario_rig:Scapula_L
+      position: {x: 0.20357807, y: -4.1211477e-15, z: 3.410605e-15}
+      rotation: {x: -0.26902738, y: -0.07750673, z: -0.10252945, w: 0.954518}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ShoulderPart1_L
+      parentName: new_mario_rig:Shoulder_L
+      position: {x: 0.118476324, y: 1.3322676e-16, z: 2.842171e-16}
+      rotation: {x: 0.13663177, y: 0.0936994, z: 0.056752052, w: 0.98454636}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ShoulderPart2_L
+      parentName: new_mario_rig:ShoulderPart1_L
+      position: {x: 0.118476324, y: 1.3322676e-16, z: 2.842171e-16}
+      rotation: {x: 0.13745907, y: -0, z: -0, w: 0.9905075}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Elbow_L
+      parentName: new_mario_rig:ShoulderPart2_L
+      position: {x: 0.118476324, y: 9.947598e-16, z: 7.105427e-16}
+      rotation: {x: 0.15344745, y: 0.037589416, z: -0.02240261, w: 0.9871875}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ElbowPart1_L
+      parentName: new_mario_rig:Elbow_L
+      position: {x: 0.17686579, y: 0, z: -1.563194e-15}
+      rotation: {x: -0.018923007, y: 0, z: -0, w: 0.99982095}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ElbowPart2_L
+      parentName: new_mario_rig:ElbowPart1_L
+      position: {x: 0.17686579, y: 0, z: -1.563194e-15}
+      rotation: {x: -0.018923007, y: 0, z: -0, w: 0.99982095}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Wrist_L
+      parentName: new_mario_rig:ElbowPart2_L
+      position: {x: 0.17686579, y: 2.842171e-16, z: -1.4210854e-15}
+      rotation: {x: 0.24320732, y: -0.119807355, z: -0.31976357, w: 0.9078809}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:MiddleFinger1_L
+      parentName: new_mario_rig:Wrist_L
+      position: {x: 0.36332464, y: -1.4210854e-15, z: 2.131628e-15}
+      rotation: {x: -0.0047947085, y: 0.059658084, z: 0.06324764, w: 0.99620163}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:MiddleFinger2_L
+      parentName: new_mario_rig:MiddleFinger1_L
+      position: {x: 0.10884032, y: 2.842171e-16, z: 3.5527135e-16}
+      rotation: {x: 0.0013760153, y: -0.03831268, z: -0.0044214367, w: 0.99925506}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:MiddleFinger3_L
+      parentName: new_mario_rig:MiddleFinger2_L
+      position: {x: 0.12823135, y: -2.842171e-16, z: 9.237055e-16}
+      rotation: {x: 0.0050082672, y: -0.026561817, z: 0.00069245655, w: 0.99963444}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:MiddleFinger4_L
+      parentName: new_mario_rig:MiddleFinger3_L
+      position: {x: 0.11966461, y: -7.105427e-17, z: 1.1368684e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ThumbFinger1_L
+      parentName: new_mario_rig:Wrist_L
+      position: {x: 0.10376495, y: -0.07672708, z: 0.13930547}
+      rotation: {x: -0.45525697, y: -0.06329739, z: -0.34350592, w: 0.8189861}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ThumbFinger2_L
+      parentName: new_mario_rig:ThumbFinger1_L
+      position: {x: 0.1432157, y: 4.2632563e-16, z: -1.1368684e-15}
+      rotation: {x: -0.03756289, y: -0.0115895085, z: 0.015823942, w: 0.99910176}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ThumbFinger3_L
+      parentName: new_mario_rig:ThumbFinger2_L
+      position: {x: 0.15867792, y: -1.6342482e-15, z: 5.684342e-16}
+      rotation: {x: 0.032484606, y: 0.03296711, z: 0.023396598, w: 0.9986544}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ThumbFinger4_L
+      parentName: new_mario_rig:ThumbFinger3_L
+      position: {x: 0.14256646, y: 2.2737367e-15, z: 1.4210854e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:IndexFinger1_L
+      parentName: new_mario_rig:Wrist_L
+      position: {x: 0.2625457, y: -0.11046917, z: -0.007721155}
+      rotation: {x: -0.0076441886, y: -0.008145836, z: 0.06110831, w: 0.99806863}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:IndexFinger2_L
+      parentName: new_mario_rig:IndexFinger1_L
+      position: {x: 0.124319285, y: 0, z: -9.947598e-16}
+      rotation: {x: 0.030247072, y: 0.03522662, z: 0.012631821, w: 0.99884164}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:IndexFinger3_L
+      parentName: new_mario_rig:IndexFinger2_L
+      position: {x: 0.11811752, y: -2.842171e-16, z: -4.2632563e-16}
+      rotation: {x: -0.06684064, y: -0.031183718, z: -0.008559264, w: 0.99723953}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:IndexFinger4_L
+      parentName: new_mario_rig:IndexFinger3_L
+      position: {x: 0.14674522, y: -3.5527136e-17, z: -5.684342e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Cup_L
+      parentName: new_mario_rig:Wrist_L
+      position: {x: 0.056182936, y: 0.036165994, z: 0.004214021}
+      rotation: {x: 0.10605919, y: 0.029163154, z: 0.018185247, w: 0.9937657}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:PinkyFinger1_L
+      parentName: new_mario_rig:Cup_L
+      position: {x: 0.16285026, y: 0.14345235, z: 0.011471314}
+      rotation: {x: -0.16295953, y: 0.038747795, z: 0.13658018, w: 0.97636503}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:PinkyFinger2_L
+      parentName: new_mario_rig:PinkyFinger1_L
+      position: {x: 0.13390158, y: 5.684342e-16, z: -1.7053025e-15}
+      rotation: {x: 0.025539458, y: -0.030852273, z: -0.020086167, w: 0.9989957}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:PinkyFinger3_L
+      parentName: new_mario_rig:PinkyFinger2_L
+      position: {x: 0.1444117, y: 0, z: 2.2737367e-15}
+      rotation: {x: 0.11364098, y: -0.028925164, z: -0.004313426, w: 0.99309134}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:PinkyFinger4_L
+      parentName: new_mario_rig:PinkyFinger3_L
+      position: {x: 0.11698461, y: -4.2632563e-16, z: 5.684342e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:RingFinger1_L
+      parentName: new_mario_rig:Cup_L
+      position: {x: 0.2694236, y: 0.045422472, z: -0.022460768}
+      rotation: {x: -0.111952014, y: -0.03733327, z: 0.076052964, w: 0.99009544}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:RingFinger2_L
+      parentName: new_mario_rig:RingFinger1_L
+      position: {x: 0.120645285, y: 2.842171e-16, z: -8.5265126e-16}
+      rotation: {x: -0.00044653958, y: -0.023961421, z: -0.029378222, w: 0.99928105}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:RingFinger3_L
+      parentName: new_mario_rig:RingFinger2_L
+      position: {x: 0.11193729, y: 2.842171e-16, z: 8.5265126e-16}
+      rotation: {x: 0.028211365, y: -0.027414743, z: 0.0034612587, w: 0.99921995}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:RingFinger4_L
+      parentName: new_mario_rig:RingFinger3_L
+      position: {x: 0.14462252, y: 5.3290704e-17, z: 0}
+      rotation: {x: 0.000000012904784, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Hip_R
+      parentName: new_mario_rig:Root_M
+      position: {x: 0.006574539, y: -0.031661507, z: -0.31954926}
+      rotation: {x: -0.17706046, y: 0.9788302, z: -0.082253106, w: 0.061445378}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:HipPart1_R
+      parentName: new_mario_rig:Hip_R
+      position: {x: -0.121134095, y: 0, z: 0}
+      rotation: {x: 0.0014565339, y: -0, z: -0, w: 0.9999989}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:HipPart2_R
+      parentName: new_mario_rig:HipPart1_R
+      position: {x: -0.121134095, y: 0, z: 0}
+      rotation: {x: 0.0014565339, y: -0, z: -0, w: 0.9999989}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Knee_R
+      parentName: new_mario_rig:HipPart2_R
+      position: {x: -0.121134095, y: -4.2632563e-16, z: 0}
+      rotation: {x: 0.0014358154, y: -0.00024479773, z: 0.1680685, w: 0.9857743}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Ankle_R
+      parentName: new_mario_rig:Knee_R
+      position: {x: -0.574956, y: 5.684342e-16, z: 2.1316282e-16}
+      rotation: {x: -0.03800044, y: 0.08208377, z: -0.04198237, w: 0.99501544}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Toes_R
+      parentName: new_mario_rig:Ankle_R
+      position: {x: -0.19649866, y: 0.39542744, z: -6.2199065e-11}
+      rotation: {x: -0.019695306, y: -0.02237147, z: -0.63397694, w: 0.77277744}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ToesEnd_R
+      parentName: new_mario_rig:Toes_R
+      position: {x: -0.25297132, y: 2.664535e-16, z: -3.1974422e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Hip_L
+      parentName: new_mario_rig:Root_M
+      position: {x: 0.006574539, y: -0.031661507, z: 0.31954926}
+      rotation: {x: 0.5742871, y: 0.81578696, z: -0.031032048, w: -0.0610162}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:HipPart1_L
+      parentName: new_mario_rig:Hip_L
+      position: {x: 0.121134095, y: 0, z: 3.5527136e-17}
+      rotation: {x: -0.01562117, y: 0.14474343, z: 0.6907503, w: 0.7082862}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:HipPart2_L
+      parentName: new_mario_rig:HipPart1_L
+      position: {x: 0.121134095, y: 0, z: 3.5527136e-17}
+      rotation: {x: -0.022049768, y: 0, z: -0, w: 0.9997569}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Knee_L
+      parentName: new_mario_rig:HipPart2_L
+      position: {x: 0.121134095, y: 2.842171e-16, z: 0}
+      rotation: {x: -0.048033394, y: 0.025990862, z: 0.2899988, w: 0.95546746}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Ankle_L
+      parentName: new_mario_rig:Knee_L
+      position: {x: 0.574956, y: 0, z: 3.1974422e-16}
+      rotation: {x: -0.044307, y: -0.0434659, z: -0.1653198, w: 0.98428506}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:Toes_L
+      parentName: new_mario_rig:Ankle_L
+      position: {x: 0.19649866, y: -0.39542744, z: 5.8069424e-11}
+      rotation: {x: -0.019695306, y: -0.02237147, z: -0.63397694, w: 0.77277744}
+      scale: {x: 1, y: 1, z: 1}
+    - name: new_mario_rig:ToesEnd_L
+      parentName: new_mario_rig:Toes_L
+      position: {x: 0.25297132, y: 0, z: 2.1316282e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

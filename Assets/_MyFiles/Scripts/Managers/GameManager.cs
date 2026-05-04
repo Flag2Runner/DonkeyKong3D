@@ -48,6 +48,8 @@ namespace _MyFiles.Scripts.Managers
         [Header("Respawn Settings")]
         [SerializeField] private GameObject jumpman;
         [SerializeField] private Transform jumpmanStartNode;
+        [Tooltip("Drag your Master Level Hammer Pickups here so they can respawn.")]
+        [SerializeField] private GameObject[] mapHammers;
 
         private void Awake()
         {
@@ -112,6 +114,12 @@ namespace _MyFiles.Scripts.Managers
             if (jumpman.TryGetComponent(out BasicGiantMover jumpmanScript))
             {
                 jumpmanScript.ResetPlayerState();
+            }
+
+            //Turn all the hammers back on
+            foreach (GameObject hammer in mapHammers)
+            {
+                if (hammer != null) hammer.SetActive(true);
             }
 
             // 4. Give the player control and start the game!
@@ -184,6 +192,12 @@ namespace _MyFiles.Scripts.Managers
             if (jumpman.TryGetComponent(out BasicGiantMover jumpmanScript))
             {
                 jumpmanScript.ResetPlayerState();
+            }
+
+            //Turn all the hammers back on
+            foreach (GameObject hammer in mapHammers)
+            {
+                if (hammer != null) hammer.SetActive(true);
             }
 
             //Resume gameplay

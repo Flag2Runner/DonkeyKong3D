@@ -1057,6 +1057,11 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1 &334272450 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1535895983592537969, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
+  m_PrefabInstance: {fileID: 8138996735928481057}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &351778703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,6 +1316,16 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &421381718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 418326575036174942, guid: e18389b15a1d9124dbe89a0eb487a583, type: 3}
+  m_PrefabInstance: {fileID: 482996189500221109}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &421381719 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2916860219232745997, guid: e18389b15a1d9124dbe89a0eb487a583, type: 3}
+  m_PrefabInstance: {fileID: 482996189500221109}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &439046362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,6 +1729,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &529285910 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1197596591477158073, guid: e18389b15a1d9124dbe89a0eb487a583, type: 3}
+  m_PrefabInstance: {fileID: 482996189500221109}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceedf4bbc3f418941bbde57728aa204a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_MyFiles.Scripts.Puppet.DonkeyKongAI
 --- !u!1 &583098522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,6 +1817,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583098522}
   m_CullTransparentMesh: 1
+--- !u!95 &641264301 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3387234524256579990, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
+  m_PrefabInstance: {fileID: 8138996735928481057}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &730337609
 GameObject:
   m_ObjectHideFlags: 0
@@ -3505,6 +3536,9 @@ MonoBehaviour:
   startDelay: 3
   jumpman: {fileID: 863134185}
   jumpmanStartNode: {fileID: 1319560645}
+  mapHammers:
+  - {fileID: 421381718}
+  - {fileID: 1868845110}
 --- !u!4 &1647912625
 Transform:
   m_ObjectHideFlags: 0
@@ -3577,8 +3611,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "A Recreation Made by\n-----------------------------------------\nLeopoldo
-    Esquivel \nand\nJulian Gamez"
+  m_text: 'A Recreation Made by
+
+    -----------------------------------------
+
+    Flag_Runner
+
+    and
+
+    Julian
+    Gamez'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3749,6 +3791,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_MyFiles.Scripts.Environment.ArcadeScreenScroller
   scrollSpeedX: 0.01
   scrollSpeedY: 0.05
+--- !u!1 &1868845110 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3869764370416406018, guid: e18389b15a1d9124dbe89a0eb487a583, type: 3}
+  m_PrefabInstance: {fileID: 482996189500221109}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1868845111 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6170922947373309524, guid: e18389b15a1d9124dbe89a0eb487a583, type: 3}
+  m_PrefabInstance: {fileID: 482996189500221109}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1876799594
 GameObject:
   m_ObjectHideFlags: 0
@@ -5427,11 +5479,11 @@ PrefabInstance:
     - target: {fileID: 1197596591477158073, guid: e18389b15a1d9124dbe89a0eb487a583, type: 3}
       propertyPath: puppetAnimator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 641264301}
     - target: {fileID: 1197596591477158073, guid: e18389b15a1d9124dbe89a0eb487a583, type: 3}
       propertyPath: handBarrelDummy
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 334272450}
     - target: {fileID: 6786530374207443365, guid: e18389b15a1d9124dbe89a0eb487a583, type: 3}
       propertyPath: inputManager
       value: 
@@ -15302,26 +15354,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: DKArcade sketchfab
       objectReference: {fileID: 0}
-    - target: {fileID: 3055867687345656232, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.13158719
-      objectReference: {fileID: 0}
-    - target: {fileID: 3055867687345656232, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 3055867687345656232, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.0014305115
-      objectReference: {fileID: 0}
-    - target: {fileID: 3055867687345656232, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3055867687345656232, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
+    - target: {fileID: 2530251403907621854, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
+      propertyPath: masterTarget
+      value: 
+      objectReference: {fileID: 421381719}
+    - target: {fileID: 2530251403907621854, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
+      propertyPath: masterLevelCenter
+      value: 
+      objectReference: {fileID: 5885680618043544110}
+    - target: {fileID: 5811463595854654501, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
+      propertyPath: masterTarget
+      value: 
+      objectReference: {fileID: 1868845111}
+    - target: {fileID: 5811463595854654501, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
+      propertyPath: masterLevelCenter
+      value: 
+      objectReference: {fileID: 5885680618043544110}
+    - target: {fileID: 6266989526472835656, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
+      propertyPath: masterAI
+      value: 
+      objectReference: {fileID: 529285910}
     - target: {fileID: 6529598559340497482, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
       propertyPath: masterTarget
       value: 
