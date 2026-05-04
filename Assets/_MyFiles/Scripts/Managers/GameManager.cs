@@ -33,6 +33,10 @@ namespace _MyFiles.Scripts.Managers
         [Header("Main Menu Text Elements")]
         [SerializeField] private TextMeshProUGUI insertCoinPromptText;
 
+        [Header("End Game Text Elements")]
+        [SerializeField] private TextMeshProUGUI winScoreText;
+        [SerializeField] private TextMeshProUGUI gameOverScoreText;
+
         [Header("Diorama Sync Settings")]
         public Transform masterLevelCenter;
         public Transform dioramaCenter;
@@ -177,6 +181,11 @@ namespace _MyFiles.Scripts.Managers
             if (CurrentState != ArcadeState.Playing) return;
 
             CurrentState = ArcadeState.GameOver;
+
+            //Set the final score text
+            if (winScoreText != null)
+                winScoreText.text = "FINAL SCORE\n" + currentScore.ToString("D6");
+
             ShowPanel(winPanel);
 
             DKAudioManager.Instance.StopMusic();
@@ -199,6 +208,11 @@ namespace _MyFiles.Scripts.Managers
             if (currentLives <= 0)
             {
                 CurrentState = ArcadeState.GameOver;
+
+                //Set the final score text
+                if (gameOverScoreText != null)
+                    gameOverScoreText.text = "FINAL SCORE\n" + currentScore.ToString("D6");
+
                 ShowPanel(gameOverPanel);
                 Invoke(nameof(ResetToAttractMode), 5f);
             }

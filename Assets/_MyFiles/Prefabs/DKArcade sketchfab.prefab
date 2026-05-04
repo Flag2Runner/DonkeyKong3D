@@ -236,7 +236,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.309
+  m_Volume: 0.185
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -396,7 +396,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.309
+  m_Volume: 0.185
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -888,7 +888,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.309
+  m_Volume: 0.185
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1373,7 +1373,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b29e9289fee7e4988e522733fce184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_MyFiles.Scripts.Environment.ArcadeCabinet
-  ScreenAnchor: {fileID: 6388586014443047951}
+  CenterScreenAnchor: {fileID: 6388586014443047951}
+  LeftScreenAnchor: {fileID: 727503228137620405}
+  RightScreenAnchor: {fileID: 17021674269841606}
 --- !u!1 &8245449505378813508
 GameObject:
   m_ObjectHideFlags: 0
