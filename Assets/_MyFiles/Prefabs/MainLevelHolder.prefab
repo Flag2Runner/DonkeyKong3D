@@ -12772,18 +12772,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5750497011386139436, guid: 89c3032cc3f35f744b7453a9fd79e1eb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5750497011386139436, guid: 89c3032cc3f35f744b7453a9fd79e1eb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5750497011386139436, guid: 89c3032cc3f35f744b7453a9fd79e1eb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6033703431515367011, guid: 89c3032cc3f35f744b7453a9fd79e1eb, type: 3}
       propertyPath: m_Name
       value: MasterPlayerCharacter
