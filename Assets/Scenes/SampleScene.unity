@@ -1321,11 +1321,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 418326575036174942, guid: e18389b15a1d9124dbe89a0eb487a583, type: 3}
   m_PrefabInstance: {fileID: 482996189500221109}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &421381719 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2916860219232745997, guid: e18389b15a1d9124dbe89a0eb487a583, type: 3}
-  m_PrefabInstance: {fileID: 482996189500221109}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &439046362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,6 +1812,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583098522}
   m_CullTransparentMesh: 1
+--- !u!95 &720159994 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2228008504451808149, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
+  m_PrefabInstance: {fileID: 8138996735928481057}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &730337609
 GameObject:
   m_ObjectHideFlags: 0
@@ -3791,11 +3791,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3869764370416406018, guid: e18389b15a1d9124dbe89a0eb487a583, type: 3}
   m_PrefabInstance: {fileID: 482996189500221109}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1868845111 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6170922947373309524, guid: e18389b15a1d9124dbe89a0eb487a583, type: 3}
-  m_PrefabInstance: {fileID: 482996189500221109}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1876799594
 GameObject:
   m_ObjectHideFlags: 0
@@ -5471,6 +5466,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1197596591477158073, guid: e18389b15a1d9124dbe89a0eb487a583, type: 3}
+      propertyPath: puppetAnimator
+      value: 
+      objectReference: {fileID: 720159994}
     - target: {fileID: 1197596591477158073, guid: e18389b15a1d9124dbe89a0eb487a583, type: 3}
       propertyPath: handBarrelDummy
       value: 
@@ -15349,22 +15348,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DKArcade sketchfab
       objectReference: {fileID: 0}
-    - target: {fileID: 2530251403907621854, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
-      propertyPath: masterTarget
-      value: 
-      objectReference: {fileID: 421381719}
-    - target: {fileID: 2530251403907621854, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
-      propertyPath: masterLevelCenter
-      value: 
-      objectReference: {fileID: 5885680618043544110}
-    - target: {fileID: 5811463595854654501, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
-      propertyPath: masterTarget
-      value: 
-      objectReference: {fileID: 1868845111}
-    - target: {fileID: 5811463595854654501, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
-      propertyPath: masterLevelCenter
-      value: 
-      objectReference: {fileID: 5885680618043544110}
     - target: {fileID: 6529598559340497482, guid: 7c9e951c929ef7b47917b46538ec0551, type: 3}
       propertyPath: masterTarget
       value: 
